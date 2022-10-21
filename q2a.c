@@ -61,7 +61,7 @@ if (child_a == 0) {
     int y;
     read(fd2[0], &y, sizeof(int));
     close(fd2[0]);
-    double result = getpid()/y;
+    double result = (double) getpid()/y;
     printf("Second Child Input: %d Output : %f \n", y, result);
     fflush(stdout);
     double arr[2] = {getpid(), result};
