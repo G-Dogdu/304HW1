@@ -7,6 +7,10 @@
 #include <signal.h>
 
 int main(int argc, char* argv[]){
+
+
+
+    //Same as the part1, just added some sleep() to the code to execute SIGKILL from htop
   
   int child_a, child_b;
   int fd1[2];
@@ -40,6 +44,7 @@ int main(int argc, char* argv[]){
 
 if (child_a == 0) {
     /* Child A code */
+    sleep(100);
     close(fd1[1]);
     int y;
     read(fd1[0], &y, sizeof(int));
@@ -51,12 +56,13 @@ if (child_a == 0) {
     close(fd3[0]);
     write(fd3[1], arr, sizeof(int)*2);
     close(fd3[1]);
-
+    sleep(5);
 } else {
     child_b = fork();
 
     if (child_b == 0) {
         /* Child B code */
+        sleep(5);
     close(fd2[1]);    
     int y;
     read(fd2[0], &y, sizeof(int));
@@ -68,6 +74,7 @@ if (child_a == 0) {
     close(fd4[0]);
     write(fd4[1], arr, sizeof(double)*2);
     close(fd4[1]);
+    sleep(20);
 
     } else {
      //Parent 
@@ -90,7 +97,7 @@ if (child_a == 0) {
      read(fd4[0], child_b, sizeof(double)*2);
      close(fd4[0]);
      
-     sleep(500);
+     sleep(50);
      printf("Result : %f\n", child_a[1] + child_b[1]);
      fflush(stdout);
      kill(child_a[0],SIGTERM);

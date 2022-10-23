@@ -8,6 +8,10 @@
 
 int main(int argc, char* argv[]) {
    
+
+   // child prints the pid and and time in a continuous loop while parent sleeps,
+   // after 5 seconds parent kills the child via kill() 
+
    struct timeval tv;
    time_t t;
    struct tm *info;

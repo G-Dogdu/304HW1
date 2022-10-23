@@ -7,6 +7,10 @@
 #include <signal.h>
 
 int main(int argc, char* argv[]){
+
+
+    // Code uses 4 pipes which parent uses 2 of them to send the input int to children
+    // While children in turn uses last two pipes to send their pids and results to parent back to print and kill
   
   int child_a, child_b;
   int fd1[2];

@@ -8,6 +8,11 @@
 
 int main(int argc, char* argv[]){
 
+
+   //This time children are created in a for loop and got their pids saved in an int array
+   //counter holds the number of operations and the final one is the parent 
+   // Just like the first question after sleeping 5 seconds parent iterates the pid array to kill children
+
    struct timeval tv;
    time_t t;
    struct tm *info;
@@ -15,6 +20,8 @@ int main(int argc, char* argv[]){
    t = tv.tv_sec;
    int pids[5];
    int counter;
+
+
    
 for (counter = 0; counter < 4; ++counter) {
   if ((pids[counter] = fork()) < 0) {
